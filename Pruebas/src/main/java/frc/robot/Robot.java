@@ -27,6 +27,7 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
 
+  // missing navx resource? !! 
   Navx navx = new Navx();
 
   /**
