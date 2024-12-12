@@ -26,20 +26,28 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   DriveTrain driveTrain = new DriveTrain();
-  Navx navx = new Navx();
+  Navx navx;
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController xController = new CommandXboxController(RobotMap.XboxPort);
-
+  Navx navx;
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
+    navx = new Navx();
     configureBindings();
+
+
+
+
   }
 
-  public double Gyro(){
+  public void updateSensors(){
     navx.run();
-  return navx.getGyro();
+  }
+
+  public double getGyro(){
+    return navx.getGyro();
   }
 
   /**
@@ -55,7 +63,7 @@ public class RobotContainer {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     driveTrain.setDefaultCommand(new DriveForever(xController, driveTrain));
 
-    System.out.println("RobotContainer");
+    //System.out.println("RobotContainer");
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
