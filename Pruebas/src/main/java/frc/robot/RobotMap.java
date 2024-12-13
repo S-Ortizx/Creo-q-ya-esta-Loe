@@ -6,5 +6,6 @@ public class RobotMap {
     public static int motor_right_2 = 2;
     public static int motor_left_1 = 6;
     public static int motor_left_2 = 7;
-
+    public static double turnspeed = 0.5;
+    public static double turn_left_90 = 270;
 }
