@@ -19,6 +19,7 @@ public class DriveTrain extends SubsystemBase {
   CANSparkMax motor_left_1;
   CANSparkMax motor_left_2;
   DifferentialDrive drive;
+
   
   public DriveTrain() {
 
@@ -39,6 +40,22 @@ public class DriveTrain extends SubsystemBase {
     System.out.println("Drive train");
     drive.arcadeDrive(speed, rotation);
   }
+
+  public void turnLeft (){
+    motor_right_1.set(RobotMap.turnspeed);
+    motor_left_1.set(-RobotMap.turnspeed);
+  }
+
+  public void turnRight (){
+    motor_right_1.set(-RobotMap.turnspeed);
+    motor_left_1.set(RobotMap.turnspeed);  
+  }
+  public void stopTrain (){
+    motor_right_1.set(0);
+    motor_left_1.set(0);
+  }
+  
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
