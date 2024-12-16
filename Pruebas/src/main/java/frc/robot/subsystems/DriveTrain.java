@@ -15,21 +15,15 @@ import frc.robot.RobotMap;
 public class DriveTrain extends SubsystemBase {
   /** Creates a new DriveTrain. */
   CANSparkMax motor_right_1;
-  CANSparkMax motor_right_2;
   CANSparkMax motor_left_1;
-  CANSparkMax motor_left_2;
   DifferentialDrive drive;
 
   
   public DriveTrain() {
 
     motor_right_1 = new CANSparkMax(RobotMap.motor_right_1,MotorType.kBrushless);
-    motor_right_2 = new CANSparkMax(RobotMap.motor_right_2,MotorType.kBrushless);
     motor_left_1 = new CANSparkMax(RobotMap.motor_left_1,MotorType.kBrushless);
-    motor_left_2 = new CANSparkMax(RobotMap.motor_left_2,MotorType.kBrushless);
 
-    motor_right_2.follow(motor_right_1);
-    motor_left_2.follow(motor_left_1);
    
 
     drive = new DifferentialDrive(motor_right_1,motor_left_1);

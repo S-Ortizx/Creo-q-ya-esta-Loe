@@ -29,7 +29,7 @@ public class DriveForever extends Command {
   @Override
   public void execute() {
 
-    driveTrain.drive(-xbox.getLeftY()*0.5, -xbox.getLeftX()*0.5);
+    driveTrain.drive(-xbox.getLeftY(), -xbox.getLeftX());
     System.out.println("Drive Forever");
   }
 
