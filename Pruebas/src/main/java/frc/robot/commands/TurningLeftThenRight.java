@@ -13,9 +13,9 @@ import frc.robot.subsystems.DriveTrain;
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class TurningLeftThenRight extends SequentialCommandGroup {
   /** Creates a new Turning_keft_t. */
-  public TurningLeftThenRight(DriveTrain driveTrain,Navx navx) {
+  public TurningLeftThenRight(DriveTrain driveTrain, Navx n) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new TurnigLeft(driveTrain, navx).andThen(new TurningRight(driveTrain, navx)));
+    addCommands(new TurnigLeft(driveTrain, n));
   }
 }

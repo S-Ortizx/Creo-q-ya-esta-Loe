@@ -36,19 +36,19 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void turnLeft (){
-    motor_right_1.set(RobotMap.turnspeed);
-    motor_left_1.set(-RobotMap.turnspeed);
+    drive.arcadeDrive(0, -0.5);
   }
 
   public void turnRight (){
-    motor_right_1.set(-RobotMap.turnspeed);
-    motor_left_1.set(RobotMap.turnspeed);  
+    drive.arcadeDrive(0, 0.5);
   }
   public void stopTrain (){
-    motor_right_1.set(0);
-    motor_left_1.set(0);
+    drive.arcadeDrive(0, 0);
   }
-  
+  public void aceleration (){
+
+    drive.arcadeDrive(0, 0);
+  }
 
   @Override
   public void periodic() {

@@ -71,6 +71,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return new TurningLeftThenRight(driveTrain, navx);
+    return new TurningLeftThenRight(driveTrain,navx);
   }
 }
