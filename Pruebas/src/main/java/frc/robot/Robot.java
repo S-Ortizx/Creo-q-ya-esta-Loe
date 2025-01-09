@@ -29,7 +29,6 @@ public class Robot extends TimedRobot {
   private static RobotContainer m_robotContainer;
 
   // another change! , please add resources!!
-  Navx navx;
 //Pruba loe// me llamo joe // No 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -40,7 +39,6 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-    navx = new Navx();
   }
 
     public static RobotContainer getRobotContainer(){
@@ -61,8 +59,7 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
-    navx.run();
-    System.out.println(navx.getYaw());
+    m_robotContainer.updateNavx();
   }
   /** This function is called once each time the robot enters Disabled mode. */
   @Override

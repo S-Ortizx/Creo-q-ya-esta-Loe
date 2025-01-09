@@ -38,7 +38,11 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
   }
-
+  public void updateNavx(){
+    navx.run();
+    System.out.println("Yaw: "+navx.getYaw());
+    System.out.println("Gyro: "+navx.getGyro());
+  }
 
   DriveTrain getDriveTrain(){
     return driveTrain;
