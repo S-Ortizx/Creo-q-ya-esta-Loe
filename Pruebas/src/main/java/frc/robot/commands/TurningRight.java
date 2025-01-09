@@ -5,39 +5,33 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.RobotMap;
-import frc.robot.resources.Navx;
 import frc.robot.subsystems.DriveTrain;
 
 public class TurningRight extends Command {
   /** Creates a new TurningRight. */
-  DriveTrain turnDriveTrain;
-  Navx navx;
-  public TurningRight(DriveTrain driveTrain, Navx navx) {
+  DriveTrain dt;
+  public TurningRight(DriveTrain driveTrain) {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.turnDriveTrain = driveTrain;
-    this.navx = navx;
+    this.dt= driveTrain;
+    addRequirements(dt);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    turnDriveTrain.stopTrain();
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    boolean position = navx.getGyro() < RobotMap.turn_right_90;
-    while (!position) {
-      turnDriveTrain.turnRight();;
-    }
+   dt.turnRight();;
+   System.out.println(dt.getGyro());
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    turnDriveTrain.stopTrain();
   }
 
   // Returns true when the command should end.

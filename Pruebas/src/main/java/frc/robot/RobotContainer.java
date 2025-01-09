@@ -8,9 +8,8 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.DriveForever;
 import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.TryTwo;
-import frc.robot.commands.TurnigLeft;
-import frc.robot.commands.TurningLeftThenRight;
+import frc.robot.commands.TurningLeft;
+import frc.robot.commands.TurningRight;
 import frc.robot.resources.Navx;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -38,11 +37,6 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
-  }
-
-  public double Gyro(){
-    navx.run();
-  return navx.getGyro();
   }
 
 
@@ -75,6 +69,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return new TryTwo(driveTrain);
+    return new TurningLeft(driveTrain,navx);
   }
 }
