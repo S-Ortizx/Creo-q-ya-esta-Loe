@@ -14,6 +14,7 @@ public class TryTwo extends Command {
   public TryTwo(DriveTrain d) {
     // Use addRequirements() here to declare subsystem dependencies.
     dt = d;
+    addRequirements(dt);
   }
 
   // Called when the command is initially scheduled.
@@ -24,7 +25,7 @@ public class TryTwo extends Command {
   @Override
   public void execute() {
 
-    dt.separate(0.4, 0.4);
+    dt.drive(-0.5, -0.1);
     System.out.println("TryTwo");
 
   }

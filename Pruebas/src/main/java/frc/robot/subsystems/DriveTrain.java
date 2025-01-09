@@ -62,7 +62,7 @@ public class DriveTrain extends SubsystemBase {
   public void separate(double motor_right, double motor_left){
 
     motor_right_1.set(motor_right);
-    motor_right_1.set(motor_left);
+    motor_left_1.set(motor_left);
 
   }
 
