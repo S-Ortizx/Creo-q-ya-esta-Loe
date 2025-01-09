@@ -27,10 +27,9 @@ public class TurningLeft extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
     dt.turnLeft();
+    navx.run();
     System.out.println(navx.getGyro());
-
   }
 
   // Called once the command ends or is interrupted.
