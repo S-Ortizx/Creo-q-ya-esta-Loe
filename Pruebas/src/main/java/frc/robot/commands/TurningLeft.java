@@ -28,7 +28,6 @@ public class TurningLeft extends Command {
   @Override
   public void execute() {
     dt.turnLeft();
-    navx.run();
     System.out.println(navx.getGyro());
   }
 
