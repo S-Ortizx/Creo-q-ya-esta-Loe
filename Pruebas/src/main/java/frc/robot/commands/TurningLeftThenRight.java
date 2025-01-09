@@ -16,6 +16,6 @@ public class TurningLeftThenRight extends SequentialCommandGroup {
   public TurningLeftThenRight(DriveTrain driveTrain, Navx n) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new TurnigLeft(driveTrain, n));
+    addCommands(new TurnigLeft(driveTrain).withTimeout(10));
   }
 }

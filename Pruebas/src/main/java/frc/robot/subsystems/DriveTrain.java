@@ -31,7 +31,6 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void drive (double speed, double rotation){
-    System.out.println("Drive train");
     drive.arcadeDrive(speed, rotation);
   }
 
@@ -48,6 +47,23 @@ public class DriveTrain extends SubsystemBase {
   public void aceleration (){
 
     drive.arcadeDrive(0, 0);
+  }
+
+  public void onMotors(){
+    motor_right_1.set(0.3);
+    motor_left_1.set(0.3);
+  }
+
+  public void stop(){
+    motor_right_1.set(0);
+    motor_left_1.set(0);
+  }
+
+  public void separate(double motor_right, double motor_left){
+
+    motor_right_1.set(motor_right);
+    motor_right_1.set(motor_left);
+
   }
 
   @Override
