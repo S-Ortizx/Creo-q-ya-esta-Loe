@@ -8,8 +8,8 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.DriveForever;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.Turning;
 import frc.robot.commands.TurningLeft;
-import frc.robot.commands.TurningRight;
 import frc.robot.resources.Navx;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -40,8 +40,6 @@ public class RobotContainer {
   }
   public void updateNavx(){
     navx.run();
-    System.out.println("Yaw: "+navx.getYaw());
-    System.out.println("Gyro: "+navx.getGyro());
   }
 
   DriveTrain getDriveTrain(){
@@ -73,6 +71,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return new TurningLeft(driveTrain,navx);
+    return new Turning(driveTrain, navx, 90,0.8,0.05,80,0);
   }
 }

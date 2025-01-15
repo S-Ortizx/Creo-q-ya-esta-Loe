@@ -7,18 +7,27 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.resources.Navx;
 import frc.robot.subsystems.DriveTrain;
+import pabeles.concurrency.IntOperatorTask.Min;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class TurningLeft extends Command {
-  /** Creates a new TryTwo. */
+public class Turning extends Command {
   DriveTrain dt;
   Navx n;
   double angle;
-  public TurningLeft(DriveTrain d, Navx n, double a) {
+  double maxspeed;
+  double minspeed;
+  double maxangle;
+  double minangle;
+  /** Creates a new Turning. */
+  public Turning(DriveTrain d, Navx n, double a, double maxspeed, double minspeed, double maxangle, double minangle) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.dt = d;
     this.n = n;
     this.angle = a;
+    this.maxspeed = maxspeed;
+    this.minspeed = minspeed;
+    this.maxangle = maxangle;
+    this.minangle = minangle;
     addRequirements(dt);
   }
 
@@ -29,7 +38,17 @@ public class TurningLeft extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    dt.drive(0.4, 0);
+
+    if(n.getGyro()<angle){
+      dt.drive(-(speed(n.getGyro(), angle)),0);;
+    }else{
+      dt.drive(speed(n.getGyro(), angle),0);
+    }
+    System.out.println("speed  "+speed(n.getGyro(), angle));
+    System.out.println("Gyro  "+n.getGyro());
+  }
+  public double speed(double actual, double objetivo){
+    return minspeed + Math.min((maxspeed-minspeed), Math.abs(actual - objetivo)/(maxangle-minangle)*(maxspeed-minspeed));
   }
 
   // Called once the command ends or is interrupted.
@@ -40,11 +59,9 @@ public class TurningLeft extends Command {
   @Override
   public boolean isFinished() {
     double a = Math.abs(n.getGyro() - angle);
-    
     if(a<2){
       return true;
     }
-
     return false;
   }
 }

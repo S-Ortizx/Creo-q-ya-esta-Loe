@@ -11,13 +11,12 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
-import frc.robot.resources.Navx;
+
 
 public class DriveTrain extends SubsystemBase {
   /** Creates a new DriveTrain. */
   CANSparkMax motor_right_1;
   CANSparkMax motor_left_1;
-  Navx navx;
   DifferentialDrive drive;
 
   
@@ -25,8 +24,6 @@ public class DriveTrain extends SubsystemBase {
 
     motor_right_1 = new CANSparkMax(RobotMap.motor_right_1,MotorType.kBrushless);
     motor_left_1 = new CANSparkMax(RobotMap.motor_left_1,MotorType.kBrushless);
-
-    navx = new Navx();
 
     drive = new DifferentialDrive(motor_right_1,motor_left_1);
 
@@ -37,7 +34,7 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void turnLeft (){
-    drive.arcadeDrive(0.4, 0);
+    drive.arcadeDrive(0.6, 0);
   }
 
   public void turnRight (){
@@ -45,9 +42,6 @@ public class DriveTrain extends SubsystemBase {
   }
   public void stopTrain (){
     drive.arcadeDrive(0, 0);
-  }
-  public double getGyro(){
-    return navx.getGyro();
   }
 
   @Override
