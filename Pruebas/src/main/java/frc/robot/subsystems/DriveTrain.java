@@ -32,6 +32,13 @@ public class DriveTrain extends SubsystemBase {
   public void drive (double speed, double rotation){
     drive.arcadeDrive(speed, rotation);
   }
+  public double GetRightPosition(){
+    return motor_right_1.getEncoder().getPosition();
+  }
+  
+  public double GetLeftPosition(){
+    return motor_left_1.getEncoder().getPosition();
+  }
 
   public void turnLeft (){
     drive.arcadeDrive(0.6, 0);
